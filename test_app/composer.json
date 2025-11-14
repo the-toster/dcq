@@ -1,0 +1,11 @@
+{
+    "name": "root/test_app",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Root\\TestApp\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}

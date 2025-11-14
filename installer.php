@@ -2,12 +2,11 @@
 
 declare(strict_types=1);
 
-$location = trim($argv[1], '/');
-if($location === '') {
-    echo "pass location as 1 arg";
-    exit;
+$rootPath = rtrim($argv[1], '/');
+if (!str_starts_with($rootPath, '/')) {
+    echo "pass absolute path as 1 arg\n";
+    exit(1);
 }
-$rootPath = __DIR__.'/'.$location;
 
 $packages = file(__DIR__.'/packages.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
@@ -17,6 +16,7 @@ foreach ($packages as $package) {
     if (!isValidName($package)) {
         continue;
     }
+
     $installPath = $rootPath.'/'.$package;
 
     install($package, $installPath);
@@ -24,11 +24,8 @@ foreach ($packages as $package) {
     $installedPaths[] = $installPath;
 }
 
-file_put_contents(
-    $rootPath.'/paths.txt',
-    'export PATH=$PATH:'
-    .implode(":", array_map(fn(string $p) => $p.'/vendor/bin', $installedPaths))
-);
+$binPaths = implode(":", array_map(fn(string $p) => $p.'/vendor/bin', $installedPaths));
+file_put_contents($rootPath.'/paths.txt', 'export PATH=$PATH:'.$binPaths);
 
 function install(string $package, string $installPath): void
 {
