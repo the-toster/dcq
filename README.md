@@ -15,7 +15,9 @@ docker run -it dqc:test bash
 # phpstan
 docker run -v ./test_app:/app -w /app dqc:test phpstan -l5 analyze ./
 
-# psalm
-docker run -v ./test_app:/app -w /app dqc:test psalm --init
+# psalm init создает файл, нужно запустить с правильным юзером, чтоб потом свободно править файл 
+docker run -v ./test_app:/app -w /app -u `id -u`:`id -g` dqc:test psalm --init
+
+# проверку можно запускать из под рута
 docker run -v ./test_app:/app -w /app dqc:test psalm
 ```
