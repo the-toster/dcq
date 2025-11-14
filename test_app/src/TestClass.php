@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Root\TestApp;
+namespace test_app\src;
 
 final class TestClass
 {

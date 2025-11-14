@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Root\TestApp\TestClass;
+use test_app\src\TestClass;
 
 require __DIR__.'/vendor/autoload.php';
 
