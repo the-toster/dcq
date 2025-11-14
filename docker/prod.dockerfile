@@ -1,4 +1,5 @@
-FROM php:8.3-cli
+ARG PHP_VER=8.3
+FROM php:${PHP_VER}-cli
 
 SHELL ["/bin/bash", "-c"]
 
