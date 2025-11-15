@@ -9,6 +9,8 @@ if [ $# -eq 0 ]
     echo "List of installed tools:"
     docker run -v `pwd`:/app -w /app -u `id -u`:`id -g` -it ${IMAGE} cat /packages.txt
     echo ""
+    echo "Shell also available as: dcq bash"
+    echo ""
     exit
 fi
 
