@@ -1,0 +1,15 @@
+#!/bin/bash
+IMAGE=dcq:test
+if [ $# -eq 0 ]
+  then
+    echo "Dockerized code quality tools. Current image: ${IMAGE}"
+    echo "Usage: dcq <command> [params]"
+    echo "Example: dcq psalm --init"
+    echo ""
+    echo "List of installed tools:"
+    docker run -v `pwd`:/app -w /app -u `id -u`:`id -g` -it ${IMAGE} cat /packages.txt
+    echo ""
+    exit
+fi
+
+docker run -v `pwd`:/app -w /app -u `id -u`:`id -g` -it ${IMAGE} "$@"
