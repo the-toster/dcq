@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
 
-. $TOOLS_PATH/paths.txt
+. $TOOLS_PATH/paths.sh
 
 exec "$@"

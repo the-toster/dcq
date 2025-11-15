@@ -25,7 +25,7 @@ foreach ($packages as $package) {
 }
 
 $binPaths = implode(":", array_map(fn(string $p) => $p.'/vendor/bin', $installedPaths));
-file_put_contents($rootPath.'/paths.txt', 'export PATH=$PATH:'.$binPaths);
+file_put_contents($rootPath.'/paths.sh', 'export PATH=$PATH:'.$binPaths);
 
 function install(string $package, string $installPath): void
 {
