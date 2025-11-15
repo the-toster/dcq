@@ -2,7 +2,7 @@
 
 Тестово собрать имэйдж:
 ```shell
-docker build -f docker/prod.dockerfile -t dcq:test .
+docker build -t dcq:test .
 ```
 
 посмотреть что там:
