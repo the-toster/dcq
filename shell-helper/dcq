@@ -1,8 +1,8 @@
 #!/bin/sh
-IMAGE=ghcr.io/the-toster/dcq:latest
+IMAGE=dcq:installed
 if [ $# -eq 0 ]
   then
-    echo "Dockerized code quality tools. Current image: ${IMAGE}"
+    echo "Dockerized code quality tools."
     echo "Usage: dcq <command> [params]"
     echo "Example: dcq psalm --init"
     echo ""
