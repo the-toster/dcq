@@ -21,9 +21,12 @@ dcq psalm --init
 dcq psalm
 ```
 
-### WIP Как пользоваться в `CI`:
+### TODO: Как пользоваться в `CI`:
+
+#### Gitlab
+можно использовать dcq как базовый образ для задачи
 ```yaml
-image: the-toster/dcq:latest # или указать версию PHP: the-toster/dcq:8.1
+image: the-toster/dcq:latest
 ```
 
 
