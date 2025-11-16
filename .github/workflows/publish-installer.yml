@@ -29,12 +29,12 @@ jobs:
         - name: Setup Pages
           uses: actions/configure-pages@v5
         - name: Generate installer
-          run: cd shell-helper && ./installer-generator.sh
+          run: cd shell-helper && ./installer-generator.sh && mkdir ../pages && mv installer.sh ../pages/install.sh
         - name: Upload artifact
           uses: actions/upload-pages-artifact@v3
           with:
             # Upload entire repository
-            path: 'shell-helper/installer.sh'
+            path: 'pages'
         - name: Deploy to GitHub Pages
           id: deployment
           uses: actions/deploy-pages@v4
