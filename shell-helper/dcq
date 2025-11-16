@@ -1,5 +1,5 @@
-#!/bin/bash
-IMAGE=dcq:test
+#!/bin/sh
+IMAGE=ghcr.io/the-toster/dcq:latest
 if [ $# -eq 0 ]
   then
     echo "Dockerized code quality tools. Current image: ${IMAGE}"
