@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-$rootPath = rtrim($argv[1], '/');
+$rootPath = rtrim($argv[1] ?? '', '/');
 if (!str_starts_with($rootPath, '/')) {
     echo "pass absolute path as 1 arg\n";
     exit(1);
@@ -39,7 +39,7 @@ function install(string $package, string $installPath): void
 
     mkdir($installPath, recursive: true);
     chdir($installPath);
-    shell_exec("composer require $php $package");
+    shell_exec("composer require $php $package -n");
 
     chdir($initialDir);
 }
