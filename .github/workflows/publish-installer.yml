@@ -1,4 +1,4 @@
-name: publish-installer.yml
+name: Publish installer to Pages
 on:
   release:
     types: [published]

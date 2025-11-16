@@ -1,4 +1,4 @@
-name: DEV Build and push docker images
+name: Test image build
 on:
   push:
     branches:
