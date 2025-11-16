@@ -1,5 +1,5 @@
 #!/bin/sh
-IMAGE=dcq:installed
+IMAGE=dcq:current
 if [ $# -eq 0 ]
   then
     echo "Dockerized code quality tools."

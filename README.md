@@ -2,37 +2,59 @@
 
 Набор инструментов для проверки качества PHP кода, запускаемый из докера.
 
-Состоит из:
-- имейджа с последними версиями инструментов (`the-toster/dcq`),
-- консольного скрипта `dcq`, который позволяет удобно запускать тулзы, как будто они на хосте: `dcq psalm`
-- TODO: скрипт установки: локально создает `dcq` в `~/.local/bin/` или аналогичном месте
-- github actions чтоб билдить образ по кнопке релиза 
-- TODO: github actions чтоб билдить скрипты
-
 ## Установка
 
 ```shell
-curl ... | sh
+curl -sSf https://the-toster.github.io/dcq/install.sh | sh
 ```
 
-### Как пользоваться локально:
+## Использование
 ```shell
 cd your_project
 dcq psalm --init
 dcq psalm
 ```
 
-### TODO: Как пользоваться в `CI`:
-
-#### Gitlab
-можно использовать dcq как базовый образ для задачи
-```yaml
-image: the-toster/dcq:latest
+## Какие инструменты доступны
+```
+vimeo/psalm
+phpstan/phpstan
 ```
 
+## TODO: Использование в `CI`
+Наверное можно использовать dcq как базовый образ для задачи 
 
-## Что тут есть / должно быть:
+#### Gitlab
+```yaml
+job-name:
+  image: ghcr.io/the-toster/dcq:latest
+```
+#### GitHub Actions
+```yaml
+container: ghcr.io/the-toster/dcq:latest
+```
 
+А в гитхабе скорее всего можно прям через докер гонять.
+TODO: сделать свой экшен.
+
+## Удаление
+```shell
+rm ~/.local/bin/dcq
+```
+
+## Ручная установка
+Скачайте образ и задайте алиас используемый `dcq`:
+```shell
+docker pull ghcr.io/the-toster/dcq:latest && docker tag ghcr.io/the-toster/dcq:latest dcq:current
+```
+Скачайте [dcq](shell-helper/dcq), добавьте его в `$PATH` и сделайте исполняемым.
+
+## Устройство 
+
+`dcq` состоит из:
+- имейджа с последними версиями инструментов (`ghcr.io/the-toster/dcq:latest`),
+- консольного скрипта [dcq](shell-helper/dcq), который позволяет удобно запускать тулзы, как будто они на хосте: `dcq psalm`
+ 
 ### ./docker-image/ 
 Сам образ, скрипт установки инструментов (имя пакета надо добавить в `packages.txt`).  
 Скрипт установки добавляет пути до `vendor/bin` каждого инструмента в `paths.sh` (там `export PATH=$PATH...`).  
@@ -40,9 +62,10 @@ image: the-toster/dcq:latest
 
 ### ./shell-helper/
 
-`dcq` - шелл скрипт запуска инструментов, который подставляет текущую папку в вольюм и задает юзера, используется для локального прогона проверок.  
+[dcq](shell-helper/dcq) - шелл скрипт запуска инструментов, который подставляет текущую папку в вольюм и задает юзера, используется для локального прогона проверок.    
+[installer-generator.sh](shell-helper/installer-generator.sh) - скрипт который из [dcq](shell-helper/dcq) и [installer-template.sh](shell-helper/installer-template.sh) генерирует инсталлер во время релиза  
 
-Его нужно как-то прописать в path, для этого создаю симлинк в `~/.local/bin/` при помощи `make-dev-symlink.sh`  
 
-И тут же должен быть скрипт установки через курл.
+### ./test-app/
 
+PHP приложение на котором проверяю как работают тулзы
