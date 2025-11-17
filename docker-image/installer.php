@@ -12,9 +12,17 @@ $packages = file(__DIR__.'/packages.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPT
 
 $installedPaths = [];
 
-foreach ($packages as $package) {
-    if (!isValidName($package)) {
+foreach ($packages as $packageLine) {
+    $packageLine = trim($packageLine);
+    [$package] = explode('#', $packageLine);
+
+    if ($package === '') {
         continue;
+    }
+
+    if (!isValidName($package)) {
+        echo "invalid package name: $package\n";
+        exit(2);
     }
 
     $installPath = $rootPath.'/'.$package;
