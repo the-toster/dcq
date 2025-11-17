@@ -1,12 +1,13 @@
 {
-    "name": "root/test-app",
+    "name": "dcq/test-app",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Root\\TestApp\\": "src/"
+            "TestApp\\": "src/"
         }
     },
     "minimum-stability": "dev",
     "require": {
+        "php": "^8.2"
     }
 }
