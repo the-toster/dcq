@@ -10,7 +10,7 @@ ADD --chmod=0755 \
 RUN install-php-extensions opcache @composer \
     bcmath
 
-ENV COMPOSER_CACHE_DIR=/tmp
+ENV XDG_CACHE_HOME=/tmp
 ENV TOOLS_PATH=/tools
 ADD installer.php packages.txt  /
 RUN php installer.php $TOOLS_PATH
