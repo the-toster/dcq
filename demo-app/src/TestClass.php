@@ -6,7 +6,9 @@ namespace TestApp;
 
 final class TestClass
 {
-    public function __construct(public string $name)
+    public string $name;
+    public function __construct(string $name)
     {
+        $this->name = $name;
     }
 }
