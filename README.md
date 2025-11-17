@@ -7,6 +7,7 @@
 ```shell
 curl -sSf https://the-toster.github.io/dcq/install.sh | sh
 ```
+установщик создаст файл `~/.local/bin/dcq` и спулит последний образ
 
 ## Использование
 ```shell
@@ -15,10 +16,13 @@ dcq psalm --init
 dcq psalm
 ```
 
-## Какие инструменты доступны
+## Доступные инструменты/команды
 ```
-vimeo/psalm
-phpstan/phpstan
+dcq psalm
+dcq phpstan analyze .
+dcq composer-dependency-analyser
+dcq rector
+dcq php-cs-fixer fix .
 ```
 
 ## TODO: Использование в `CI`
@@ -66,6 +70,6 @@ docker pull ghcr.io/the-toster/dcq:latest && docker tag ghcr.io/the-toster/dcq:l
 [installer-generator.sh](shell-helper/installer-generator.sh) - скрипт который из [dcq](shell-helper/dcq) и [installer-template.sh](shell-helper/installer-template.sh) генерирует инсталлер во время релиза  
 
 
-### ./test-app/
+### ./demo-app/
 
 PHP приложение на котором проверяю как работают тулзы
