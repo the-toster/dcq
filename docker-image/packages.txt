@@ -1,7 +1,5 @@
 vimeo/psalm
 phpstan/phpstan
 shipmonk/composer-dependency-analyser
-ergebnis/composer-normalize
-infection/infection
 friendsofphp/php-cs-fixer
 rector/rector
